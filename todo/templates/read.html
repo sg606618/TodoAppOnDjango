@@ -1,0 +1,41 @@
+{% load static %}
+
+<h1 class="my-4 text-center fs-1 fw-bold text-uppercase text-danger">Todos Here</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>S.No.</th>
+        <th>Title</th>
+        <th>Your Works</th>
+        <th>Added</th>
+        <th>Edited</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% for todo in todo %}
+        <tr>
+            <th class="" style="font-size: 12px">{{ forloop.counter }}</th>
+            <td class="" style="font-size: 14px">{{ todo.title }}</td>
+            <td class="" style="font-size: 14px">{{ todo.description }}</td>
+            <td class="" style="font-size: 12px">{{ todo.created_at }}</td>
+            <td class="" style="font-size: 12px">{{ todo.updated_at }}</td>
+            <td class="d-flex gap-1">
+                <a href="{% url 'todo:update' todo.slug %}">
+                    <button class="btn btn-sm btn-primary">Update</button>
+                </a>
+
+                <form action="{% url 'todo:delete' todo.slug %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'todo:create' %}">
+    <button class="btn btn-success btn-sm mx-auto">Add Todo</button>
+</a>
+

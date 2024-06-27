@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    Update Page
+{% endblock %}
+
+
+{% block main-content %}
+    <div class="container mx-auto">
+        <h1>Update Your TODO</h1>
+        <form action="{% url 'todo:update' todo.slug %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+        </form>
+    </div>
+{% endblock %}
