@@ -1,3 +1,5 @@
+.gitignore
+
 # Django #
 *.log
 *.pot
@@ -147,10 +149,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 .venv/
-
-# Pipenv specific files
-Pipfile
-Pipfile.lock
 
 # Django stuff:
 *.pyo
